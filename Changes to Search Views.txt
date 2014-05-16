@@ -1,0 +1,10 @@
+def search_celebrity(request)
+	if request.method == "POST":
+		search_names = request.POST['search_text']
+	else:
+		search_text = ''
+	
+	objects = Celebrity.opjects.filter(title__contains=search_text)
+	
+	return render_to_response('ajax_search.html', {'celebrities': objects,
+                                       'keyword': keyword})

@@ -1,0 +1,94 @@
+{% load static from staticfiles %}
+<!DOCTYPE html>
+<html lan="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+
+    <title>{% block title %}{% endblock %}</title>
+
+    <link rel="shortcut icon" href="/static/images/douchebagicon.ico">
+    <meta name="TITLE" content="Celebrity Douche Bag : Celebrity Ratings, Celebrity News, Celebrity Photos, " />
+<meta name="DESCRIPTION" content="Celebrity Douche Bag| Is a celebrity a nice person or a douchebag" />
+
+    <link href="css/default.css" rel="stylesheet" type="text/css" media="screen">
+    <link href="css/pick.css" rel="stylesheet" type="text/css" media="screen">
+    <link rel="stylesheet" href="C:\Users\David\Desktop\celebrity-master\HTML\defaultceleb.css" />
+    {% block extra_head %}{% endblock %}
+
+</head>
+
+<body>
+
+    <!-- Begin UI for Selected Pick -->
+    <div class="bg-elements">
+            <div id="header">
+                <div id="menubar">
+                    <div class="left">
+                        <div class="left logo">
+                            <a href="/"><img src="file:///C|/Users/David/Desktop/celebrity-master/static/images/logo1.png" atl="Celeberty Dbag logo"></a>
+                        </div>
+                        <div class="left menuitem  split-right"><a href="{% url 'category_list' slug='actors' %}" class="color-primary height-full">Actors</a></div>
+                        <div class="left menuitem split-right"><a href="{% url 'category_list' slug='musicians' %}" class="color-primary height-full">Musicians</a></div>
+                        <div class="left menuitem split-right"><a href="{% url 'category_list' slug='tv' %}" class="color-primary height-full">TV</a></div>
+                        <div class="left menuitem split-right"><a href="{% url 'category_list' slug='radio' %}" class="color-primary height-full">Radio</a></div>
+                        <div class="left menuitem split-right"><a href="{% url 'category_list' slug='athletes' %}" class="color-primary height-full">Athletes</a></div>
+                        <div class="left menuitem split-right"><a href="{% url 'category_list' slug='politicians' %}" class="color-primary height-full">Politicians</a></div>
+                    </div>
+                    <div id="searchBar">
+                        <form method="post" action="{% url 'search' %}" style="position:relative;">
+                         {% csrf_token %}
+                            <fieldset>
+                                <div class="searchBox">
+                                    <input id="search" sub="input" name="keyword" type="text" placeholder="Search Celebrity">
+                                    <button sub="submitbutton" type="submit">
+                                        <span class="icon magnify"> </span>
+                                    </button>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                    <div class="right">
+                      {% if user.is_authenticated %}<div class="left signitem"><a href="{% url 'userena_signin' %}" class="font-12 color-primary">Log Out</a></div>{% else %}<div class="left signitem"><a href="{% url 'userena_signin' %}" class="font-12 color-primary">Log In</a></div>
+                        <div class="left signitem"><a href="{% url 'userena_signup' %}" class="font-12 color-primary">Sign Up</a></div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+                 {% block content %}
+            <div id="content">  
+            </div>
+ {% endblock %}
+            <div id="footer">
+                <a href="{% url 'advertise' %}">Advertise</a>
+                <a href="{% url 'terms' %}">Terms and Contentions</a>
+                <a href="{% url 'contact' %}">Contact Us</a>            
+                <div class="copyright">
+                    <div class="font-12 color-primary">© Copyright 2014 CelebrityDouche.com, </div>
+                    <div class="font-12 color-primary">All rights reserved Various trademarks held by their respective owners.</div>
+                </div>
+            </div>
+            <!-- End UI for Footer -->
+
+        
+    </div>
+
+    <script type="text/javascript" src="{% static 'js/jquery-1.7.2.min.js' %}"></script>
+ <script type="text/javascript" src="{% static 'js/ajax-search.js' %}"></script>
+    {% block extra_scripts %}{% endblock %}
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-50832357-1', 'celebritydbag.com');
+  ga('send', 'pageview');
+</script>
+    
+<!-- End Google Analytics -->
+
+</body>
+</html>
+

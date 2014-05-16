@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lan="en">
+<head>
+<link href="defaultceleb.css" rel="stylesheet" type="text/css" media="screen" />
+</head>
+
+{% load i18n %}
+{% load url from future %}
+{% block title %}{% trans "Signin" %}{% endblock %}
+{% block content %}
+	<div id="header-bar">
+    <div id="header-bar-container"><h2>Sign Up</h2></div>
+
+		</div>	
+			
+<div class="sign_up_content">
+<div class="box">	        	
+
+<div class="form">
+<form method="post">		
+{% csrf_token %}
+{% if form.errors %}<p>Please correct the following fields:</p>{% endif %}				
+<div class="row">
+{% if form.username.errors %}<p class="error">{{ form.username.errors }}</p>{% endif %}
+<label for="username"{% if form.username.errors %} class="error"{% endif %}>Username:</label>
+<p>{{ form.username }}</p>
+</div>
+<div class="row">
+{% if form.email.errors %}<p class="error">{{ form.email.errors }}</p>{% endif %}-->
+<label for="email"{% if form.email.errors %} class="error"{% endif %}>Email:</label>
+<p>{{ form.email }}</p>
+</div>						
+<div class="row">
+{% if form.password.errors %}<p class="error">{{ form.password.errors }}</p>{% endif %}
+<label for="password"{% if form.password.errors %} class="error"{% endif %}>Password:</label>
+<p>{{ form.password }}</p>				
+</div>
+<div class="row">
+{% if form.password1.errors %}<p class="error">{{ form.password1.errors }}</p>{% endif %}
+<label for="password1"{% if form.password1.errors %} class="error"{% endif %}>Verify Password:</label>
+<p>{{ form.password1 }}</p>
+</div>
+
+<div class="align-right">
+<input class="button font-19 font-strong color-primary" type="submit" name="yt0" value="Create My Account">							
+</div>
+</form>
+</div>
+       	
+<div class="right split-left">
+<div class="form">
+<div class="social_sign">
+<div class="header">
+Sign up with Twitter
+</div>
+<div class="content">
+<p>Connect your Twitter account to sign up for Celebrity Dbag.</p>
+</div>                    
+<div class="footer">
+<a href="">Log In</a>                        
+</div>
+</div>
+<br><br>
+<div class="social_sign">
+<div class="header">Sign up with Facebook</div>
+<div class="content"><p>Connect your Facebook account to sign up for Celebrity Dbag.</p></div>                    
+<div class="footer">
+<a href="">Log In</a>                        
+</div>
+</div>                   
+</div>
+</div>
+<div class="clear"></div>
+</div>
+</div>
+
+{% endblock %}
+</html>

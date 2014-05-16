@@ -1,0 +1,146 @@
+<!DOCTYPE html ><head>
+<link href="defaultceleb.css" rel="stylesheet" type="text/css" media="screen" />
+</head>
+{% extends "base_generic.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+	<div id="header-bar">
+    <div id="header-bar-container"><h2>Account Information</h2></div>
+
+		</div>	
+<div class="account-wrapper">
+<div class="box-body" id="account-info">
+
+<div id="account-form">
+
+<form method="post">
+
+<fieldset>
+<div class="account-update">
+<h4>Email</h4>
+<p>Change your name or email address you would like to be contact at.</p></div>
+<table>
+<tbody>
+<tr>
+<th>
+<label for="user-first-name">
+Username:</label>
+</th>
+<td class="col-field">
+<input class="text-field with-box" id="user-first_name" name="user[first-name]" value="Da" type="text">
+</td>
+</tr>
+<tr><th></th><td class="col-help">
+<div style="display:none;" class="error-help">
+Please put a first name
+</div>
+<div style="display:none;" class="error-box">
+Incorrect Name
+</div>
+</td></tr>
+<tr><th></th><td class="col-help">
+<div style="display:none;" class="error-help">
+Enter your last name
+</div>
+<div style="display:none;" class="error-box">
+Incorrect Name
+</div>
+</td></tr>
+<tr>
+<th>
+<label>Email Address:</label></th>
+<td class="col-field">
+<input class="text-field with-box" id="user-email" name="user[email]" size="30" value="thethethe789@yahoo.com" type="text"></td></tr>
+<tr><th></th><td class="col-help">
+<div style="display:none;" class="error-help">
+Enter your email address
+<span id="email-match">Your email doen't match</span>
+</div>
+<div style="display:none;" class="error-box">
+<span id="email-match">Your email doen't match</span>
+</div>
+<div class=profile-image><a href="" class="celebrity-image">
+{% if user.thumbnail %}
+<img src="C:\Users\David\Desktop\celebrity-master\static\images\user_default_image.jpg" width="50" sub="img" class="fl" alt="">
+{% ifelse%}
+<img src="C:\Users\David\Desktop\celebrity-master\static\images\user_default_image.jpg" width="50" sub="img" class="fl" alt="">
+{% endif %}
+
+</a></div>
+<form method="post" action="file-upload-1.htm" name="submit" enctype="multipart/form-data">
+  <input type="file" name="fileField"><br /><br />
+  <input type="submit" name="submit" value="Submit">
+</form>
+</td></tr>
+
+</tbody>
+</table>
+
+</fieldset>
+</form>
+<form action="" method="post">{% csrf_token %}
+<fieldset>
+<div class="account-update">
+<h4>Password</h4>
+<p>Change your password</p>
+</div>
+<table>
+<tbody>
+<tr>
+<th>
+<label class="text-field with-box" for="user_password">
+
+</label>
+</th>
+<td class="aligned wide">
+{{ form.new_password1.errors }}
+<label for="id_new_password1">{% trans 'New password:' %}</label>{{ form.new_password1 }}
+</td>
+{{ form.new_password2.errors }}
+
+</tr>
+<tr><th></th><td class="col-help">
+<div style="display:none;" class="error-box">
+<span id="password-match">Your password doen't match</span>
+</div>
+</td></tr>
+<tr>
+</tr><tr>
+<th>
+<label for="id_new_password2">{% trans 'Confirm password:' %}</label>{{ form.new_password2 }}
+</label>
+</th>
+<td class="aligned wide">
+<input type="submit" value="{% trans 'Change my password' %}" />
+</td>
+</tr>
+<tr><th></th><td class="col-help">
+<div style="display:none;" class="error-help">
+Enter your first name
+</div>
+<div style="display:none;" class="error-box">
+<span id="password-match">Your password doesn't match</span>
+</div>
+</td></tr>
+
+</tbody>
+</table>
+{% else %}
+
+<p>{% trans "The password reset link was invalid, possibly because it has already been used.  Please request a new password reset." %}</p>
+
+{% endif %}
+
+<div class="button-short" width="230px;">
+Save Changes
+</div>
+</fieldset>
+</form>
+{% endblock %}
+
+</div>
+
+</div><!--end content-->
+
+</div>
+</html>

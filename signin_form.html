@@ -1,0 +1,45 @@
+<head>
+<link href="defaultceleb.css" rel="stylesheet" type="text/css" media="screen" />
+</head>
+{% load i18n %}
+{% load url from future %}
+{% block title %}{% trans "Signin" %}{% endblock %}
+{% block content %}
+	<div id="header-bar">
+    <div id="header-bar-container"><h2>Sign In</h2></div>
+
+		</div>	
+<div class="sign_in_content">
+<div class="box">	
+<div class="form">
+<form action="" method="post">
+  {% csrf_token %}					
+<div class="row">
+{%if form.errors %}<p class="errors">{{ form.username.errors}}</p>{%endif%}
+<label class="hidden-label" for="User_email">Email</label>
+ <p><label for="username"{% if form.username.errors %} class="error"{% endif %}>Email:</label></p>
+ <p>{{ form.username }}</p>
+</div>						
+<div class="row">
+{% if form.password.errors %}<p class="error">{{ form.password.errors }}</p>{% endif %}
+<label class="hidden-label" for="User_password">Password</label>
+ <p><label for="password"{% if form.password.errors %} class="error"{% endif %}>Password:</label></p>	
+ <p>{{ form.password }}</p>			
+</div>
+<div class="row">
+	<label>&nbsp;</label>
+	<p class="forgot-password"><a href="{% url 'userena_password_reset' %}" title="{% trans 'Forgot your password?' %}">{% trans "Forgot your password?" %}</a></p>
+	</div>
+<div class="align-right">
+<input class="button font-19 font-strong color-primary" type="submit" name="yt0" value="{% trans "Signin" %}">							
+</form>
+
+      	
+  <p class="social-facebook-login"><a href="{% url 'socialauth_begin' 'facebook' %}" title="{% trans 'Login With Facebook' %}">{% trans "Login with Facebook" %}</a></p>
+  <p class="social-twitter-login"><a href="{% url 'socialauth_begin' 'twitter' %}" title="{% trans 'Login with Twitter' %}">{% trans "Login with Twitter" %}</a></p>
+  {% if next %}<input type="hidden" name="next" value="{{ next }}" />{% endif %} </div> </div>    
+ 
+</div>
+
+</div>
+{% endblock %}
